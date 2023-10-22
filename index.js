@@ -71,7 +71,7 @@ async function run() {
     const query = {_id : new ObjectId(id)};
     const result = await cartCollection.deleteOne(query)
     res.send(result)
-    console.log(result)
+    
   })
 
     // Send a ping to confirm a successful connection
