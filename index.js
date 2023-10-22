@@ -66,6 +66,24 @@ async function run() {
       res.send(result)
   })
 
+  app.put('/brands/:id', async(req, res) =>{
+    const id = req.params.id
+    const user = req.body
+   
+    const filter = {_id: new ObjectId(id)}
+    const options = {upsert: true}
+    const updateProduct = {
+      $set: {
+        name: user.name,
+        email: user.email
+      }
+    }
+     
+    const result = await userCollection.updateOne(filter, updateProduct, options)
+    res.send(result)
+
+  })
+
   app.delete('/cart/:id', async(req,res) => {
     const id = req.params.id;
     const query = {_id : new ObjectId(id)};
